@@ -18,7 +18,7 @@ export async function uploadImageToBunnyCDN(
 
   try {
     // Convert the image to WebP format
-    const webpBuffer = await sharp(image).webp({ quality: 80 }).toBuffer();
+    const webpBuffer = await sharp(image).webp().toBuffer();
 
     // Upload the WebP image to Bunny CDN
     await axios.put(
