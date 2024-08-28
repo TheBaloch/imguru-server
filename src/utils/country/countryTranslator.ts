@@ -88,6 +88,7 @@ export default async function blogTranslate(
       funFacts: englishCountryTranslation.funFacts,
       weirdFacts: englishCountryTranslation.weirdFacts,
       conclusion: englishCountryTranslation.conclusion,
+      author: englishCountryTranslation.author,
     };
     let TranslatedJSONDATA;
     try {

@@ -14,8 +14,7 @@ dotenv.config(); //env file read
 
 //Routes Import
 import userRoutes from "./routes/userRoutes";
-import blogRoutes from "./routes/blogRoutes";
-import categoryRoutes from "./routes/categoryRoutes";
+import countryRoutes from "./routes/countryRoutes";
 import siteSettingRoutes from "./routes/siteSettingsRoutes";
 import uploadRoutes from "./routes/uploadRoute";
 
@@ -49,8 +48,7 @@ async function startServer() {
     res.sendFile(path.join(__dirname, "sitemap.txt"));
   });
   app.use("/api", userRoutes);
-  app.use("/api", blogRoutes);
-  app.use("/api", categoryRoutes);
+  app.use("/api", countryRoutes);
   app.use("/api", siteSettingRoutes);
   app.use("/api", uploadRoutes);
   app.use("/api/public", express.static(staticFilesPath));

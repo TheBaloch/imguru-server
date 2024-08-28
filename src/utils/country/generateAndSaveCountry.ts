@@ -1,5 +1,4 @@
 import { AppDataSource } from "../../config/database";
-import { BlogTranslation } from "../../entities/BlogTranslation";
 import { Country } from "../../entities/Country";
 import { CountryTranslations } from "../../entities/CountryTranslations";
 import { Tag } from "../../entities/Tag";
@@ -71,6 +70,7 @@ export async function generateAndSaveCountry(
       countryTranslation.continent = countryData.continent;
       countryTranslation.officialLanguage = countryData.officialLanguage;
       countryTranslation.name = countryData.name;
+      countryTranslation.author = countryData.author;
       countryTranslation = await countryTranslationsRepository.save(
         countryTranslation
       );
@@ -118,6 +118,7 @@ export async function generateAndSaveCountry(
       country.isoAlpha3Code = countryData.isoAlpha3Code;
       country.isoNumericCode = countryData.isoNumericCode;
       country.name = countryData.name;
+      country.rank = parseInt(countryData.rank);
       country.timeZone = countryData.timeZone;
       country.tags = tags;
       country.mainImage = mainImage;

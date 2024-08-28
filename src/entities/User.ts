@@ -9,7 +9,7 @@ import {
   OneToMany,
 } from "typeorm";
 import bcrypt from "bcryptjs";
-import { Comment } from "./Comment";
+//import { Comment } from "./Comment";
 import { v4 as uuidv4 } from "uuid";
 import { sendVerifyEmail } from "../utils/mailer/sendMail";
 
@@ -27,8 +27,8 @@ export class User {
   @Column({ type: "varchar", nullable: true })
   username!: string;
 
-  @OneToMany(() => Comment, (comment) => comment.user)
-  comments!: Comment[];
+  // @OneToMany(() => Comment, (comment) => comment.user)
+  // comments!: Comment[];
 
   @Column({ type: "varchar", nullable: true })
   phone!: string;

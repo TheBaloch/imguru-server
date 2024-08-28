@@ -81,6 +81,9 @@ export class CountryTranslations {
   @Column({ type: "text", nullable: true })
   touristAttractions!: string; //html content
 
+  @Column("json", { nullable: true })
+  author!: {}; //.name .about
+
   @ManyToOne(() => Country, (country) => country.translations)
   @JoinColumn()
   country!: Country;

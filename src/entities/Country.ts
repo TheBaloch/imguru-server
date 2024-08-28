@@ -22,6 +22,9 @@ export class Country {
   @Column({ type: "varchar" })
   name!: string;
 
+  @Column({ type: "int" })
+  rank!: number;
+
   @Column({ type: "varchar" })
   mainImage!: string;
 

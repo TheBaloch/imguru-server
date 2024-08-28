@@ -20,6 +20,11 @@ export interface FunFact {
   content: string;
 }
 
+export interface Author {
+  name: string;
+  about: string;
+}
+
 export interface WeirdFact {
   heading: string;
   content: string;
@@ -36,6 +41,7 @@ export interface SEO {
 export interface CountryData {
   slug: string;
   name: string;
+  rank: string;
   isoAlpha2Code: string;
   isoAlpha3Code: string;
   isoNumericCode: string;
@@ -69,6 +75,7 @@ export interface CountryData {
   touristAttractions: string;
   SEO: SEO;
   Tags: string[];
+  author: Author;
 }
 
 /**
@@ -85,6 +92,7 @@ Return the result in the following JSON only format with no additional text:
 {
   "slug": "seo-friendly-slug-containing-only-country-name",
   "name": "Correct name and spellings",
+  "rank": "Country passport rank",
   "isoAlpha2Code": "The ISO 3166-1 Alpha-2 code",
   "isoAlpha3Code": "The ISO 3166-1 Alpha-3 code",
   "isoNumericCode": "The ISO 3166-1 Numeric code",
@@ -158,7 +166,11 @@ Return the result in the following JSON only format with no additional text:
     "ogTitle":"strong, attention-grabbing title.",
     "ogDescription":"summary of the content, further improving the visibility and appeal of content",
   },
-  "Tags":["tag1","tag2","tag3"],  //these are relevent tags or keywords for internal linking
+  "Tags":["tag1","tag2","tag3"],  //these are relevent tags or keywords for internal linking,
+  "author": {
+    "name": "Generate a local name that fits the tone and culture of the country being written about. Consider common or historically significant names from that country for inspiration.",
+    "about": "Write a compelling author bio that highlights expertise and background relevant to the country being discussed. Include details such as the author's connection to the country, notable achievements, experience in writing or cultural exploration, and any unique insights they bring to the topic."
+  }
 }
 `;
 
