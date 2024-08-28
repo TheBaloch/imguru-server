@@ -95,9 +95,9 @@ export const getCountryBySlug = async (req: Request, res: Response) => {
     const translation =
       country.translations.find((t) => t.language === lang) ||
       country.translations.find((t) => t.language === "en");
-
+    const { translations, ...data } = country;
     return res.status(200).json({
-      ...country,
+      ...data,
       ...translation,
     });
   } catch (error) {

@@ -120,6 +120,7 @@ export default async function countryTranslate(
     translatedCountry.funFacts = TranslatedJSONDATA?.funFacts;
     translatedCountry.weirdFacts = TranslatedJSONDATA?.weirdFacts;
     translatedCountry.conclusion = TranslatedJSONDATA?.conclusion;
+    translatedCountry.author = TranslatedJSONDATA?.author;
 
     try {
       translatedCountry.history = await retry(translateHTML, [
