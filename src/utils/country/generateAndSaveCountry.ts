@@ -5,6 +5,7 @@ import { Tag } from "../../entities/Tag";
 import { addToSitemap } from "../sitemap";
 import OpenAI from "openai";
 import { generateCountry } from "./countryGenerator";
+import countryTranslate from "./countryTranslator";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -131,7 +132,8 @@ export async function generateAndSaveCountry(
       addToSitemap(
         `${process.env.CLIENT_URL}/en/${process.env.COUNTRY_PATH}/${country.slug}`
       );
-      //   console.log(`Generated: ${blog.slug}`);
+      console.log(`Generated: ${country.slug}`);
+      await countryTranslate(country.id, "ar");
       //   await blogTranslate(finalBlog.id, "es");
       //   await blogTranslate(finalBlog.id, "fr");
       //   await blogTranslate(finalBlog.id, "de");

@@ -39,7 +39,7 @@ async function retry<T>(
  * @param {number} countryId - The id of the blog post.
  * @param {string} language - 2 letter ISO language code
  */
-export default async function blogTranslate(
+export default async function countryTranslate(
   countryId: number,
   language: string
 ) {
