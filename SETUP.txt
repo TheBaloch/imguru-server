@@ -1,0 +1,23 @@
+temp dont need for now in package.json
+// "build": "tsc && cp -r src/utils/mailer/templates/* dist/utils/mailer/templates/",
+
+install postgres
+
+set listen port to localhost
+
+sudo -u postgres psql
+
+CREATE ROLE imguru WITH LOGIN PASSWORD '@sup3rm2n';
+
+CREATE DATABASE imguru;
+
+ALTER ROLE imguru WITH SUPERUSER;
+
+\q
+
+
+npm i -g pm2
+
+pm2 start --name server yarn -- run dev
+
+pm2 save
