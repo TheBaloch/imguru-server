@@ -126,6 +126,9 @@ Return the result in the following JSON only format with no additional text:
     {
       "name": "The name of another major city.",
       "description": "A brief description or notable fact about the city."
+    },
+    {
+      //list all big/major cities
     }
   ],
   "overview": "A concise overview paragraph summarizing key aspects of the country.",
@@ -144,7 +147,7 @@ Return the result in the following JSON only format with no additional text:
       "heading": "A brief title for another fun fact.",
       "content": "A concise description of another fun fact."
     },
-    "Additional fun facts can be added following the same structure."
+    "Add additional fun facts following the same structure."
   ],
   "weirdFacts": [
     {
@@ -155,7 +158,7 @@ Return the result in the following JSON only format with no additional text:
       "heading": "A brief title for another weird fact.",
       "content": "A concise description of another weird fact."
     },
-    "Additional weird facts can be added following the same structure."
+    "Add additional fun facts following the same structure."
   ],
   "currentAffairs": "Next JS friendly, SEO optimized, and structured HTML content covering recent developments, significant events, or current affairs in the country.",
   "touristAttractions": "Next JS friendly, SEO optimized, and structured HTML content highlighting the top tourist attractions or popular destinations in the country.",

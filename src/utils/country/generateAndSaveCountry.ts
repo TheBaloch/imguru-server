@@ -133,7 +133,17 @@ export async function generateAndSaveCountry(
         `${process.env.CLIENT_URL}/en/${process.env.COUNTRY_PATH}/${country.slug}`
       );
       console.log(`Generated: ${country.slug}`);
+      await countryTranslate(country.id, "es");
+      await countryTranslate(country.id, "zh");
       await countryTranslate(country.id, "ar");
+      await countryTranslate(country.id, "fr");
+      await countryTranslate(country.id, "de");
+      await countryTranslate(country.id, "pt");
+      await countryTranslate(country.id, "ja");
+      await countryTranslate(country.id, "ru");
+      await countryTranslate(country.id, "ko");
+      await countryTranslate(country.id, "hi");
+      await countryTranslate(country.id, "it");
       //   await blogTranslate(finalBlog.id, "es");
       //   await blogTranslate(finalBlog.id, "fr");
       //   await blogTranslate(finalBlog.id, "de");

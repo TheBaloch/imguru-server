@@ -84,7 +84,7 @@ export const getCountryBySlug = async (req: Request, res: Response) => {
     // Fetch the main blog with related entities
     const country = await countryRepository.findOne({
       where: { slug },
-      relations: ["translations"],
+      relations: ["translations", "tags"],
     });
 
     if (!country) {

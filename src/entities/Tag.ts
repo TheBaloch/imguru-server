@@ -3,7 +3,6 @@ import {
   PrimaryGeneratedColumn,
   Column,
   ManyToMany,
-  CreateDateColumn,
   Index,
 } from "typeorm";
 import { Country } from "./Country";
@@ -19,9 +18,6 @@ export class Tag {
 
   @Column({ unique: true, type: "varchar", length: 100 })
   slug!: string;
-
-  @CreateDateColumn({ type: "timestamp" })
-  createdAt!: Date;
 
   @ManyToMany(() => Country, (country) => country.tags)
   country!: Country[];
