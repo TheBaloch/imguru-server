@@ -87,7 +87,7 @@ export async function generateCountry(
   name: string
 ): Promise<CountryData | null> {
   try {
-    const prompt = `Write a comprehensive blog post that provides in-depth information about country: "${name}" with a minimum word count of 2,000 words.
+    const prompt = `Write a comprehensive blog post that provides in-depth information about country: "${name}" with a minimum word count of 2,000 words or more covering all possible aspects.
 Return the result in the following JSON only format with no additional text:
 {
   "slug": "seo-friendly-slug-containing-only-country-name",
@@ -134,9 +134,9 @@ Return the result in the following JSON only format with no additional text:
   "overview": "A concise overview paragraph summarizing key aspects of the country.",
   "title": "A catchy, SEO-friendly title that captures the essence of the content.",
   "introduction": "An engaging introduction paragraph that draws the reader into the topic.",
-  "history": "Next JS friendly, SEO optimized, readable, and structured HTML content providing an in-depth historical overview of the country.",
-  "culture": "Next JS friendly, SEO optimized, readable, and structured HTML content describing the cultural aspects of the country, including traditions, languages, and arts.",
-  "geography": "Next JS friendly, SEO optimized, readable, and structured HTML content detailing the geographical features and landscapes of the country.",
+  "history": "Next JS friendly, SEO optimized, readable, and structured HTML content  with all required tags like <p><h> or <li> etc providing an in-depth historical overview of the country.",
+  "culture": "Next JS friendly, SEO optimized, readable, and structured HTML content  with all required tags like <p><h> or <li> etc describing the cultural aspects of the country, including traditions, languages, and arts.",
+  "geography": "Next JS friendly, SEO optimized, readable, and structured HTML content  with all required tags like <p><h> or <li> etc detailing the geographical features and landscapes of the country.",
   "conclusion": "A concluding paragraph that summarizes the content and encourages further exploration.",
   "funFacts": [
     {
@@ -147,7 +147,9 @@ Return the result in the following JSON only format with no additional text:
       "heading": "A brief title for another fun fact.",
       "content": "A concise description of another fun fact."
     },
-    "Add additional fun facts following the same structure."
+    {
+    "Add more fun facts following the same structure."
+    }
   ],
   "weirdFacts": [
     {
@@ -158,10 +160,12 @@ Return the result in the following JSON only format with no additional text:
       "heading": "A brief title for another weird fact.",
       "content": "A concise description of another weird fact."
     },
-    "Add additional fun facts following the same structure."
+    {
+    "Add more fun facts following the same structure."
+    }
   ],
-  "currentAffairs": "Next JS friendly, SEO optimized, and structured HTML content covering recent developments, significant events, or current affairs in the country.",
-  "touristAttractions": "Next JS friendly, SEO optimized, and structured HTML content highlighting the top tourist attractions or popular destinations in the country.",
+  "currentAffairs": "Next JS friendly, SEO optimized, and structured HTML content with all required tags like <p><h> or <li> etc covering recent developments, significant events, or current affairs in the country.",
+  "touristAttractions": "Next JS friendly, SEO optimized, and structured HTML content  with all required tags like <p><h> or <li> etc  highlighting the top tourist attractions or popular destinations in the country.",
   "SEO":{
     "metaTitle":"strong, attention-grabbing title.",
     "metaDescription":"brief and compelling summary of the page content",
@@ -174,8 +178,7 @@ Return the result in the following JSON only format with no additional text:
     "name": "Generate a local name that fits the tone and culture of the country being written about. Consider common or historically significant names from that country for inspiration.",
     "about": "Write a compelling author bio that highlights expertise and background relevant to the country being discussed. Include details such as the author's connection to the country, notable achievements, experience in writing or cultural exploration, and any unique insights they bring to the topic."
   }
-}
-`;
+}`;
 
     const system = `These guidelines are designed to produce high-quality, engaging content about the history and current affairs of various countries. The content should captivate readers, encouraging exploration while remaining optimized for search engines. Follow these instructions closely:
 1. Human-like Writing:
