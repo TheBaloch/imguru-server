@@ -35,7 +35,7 @@ export const getCountries = async (req: Request, res: Response) => {
     const countryRepository = AppDataSource.getRepository(Country);
     const [country, total] = await countryRepository.findAndCount({
       relations: ["translations"],
-      order: { rank: "DESC" },
+      order: { rank: "ASC" },
       skip: (Number(page) - 1) * Number(limit),
       take: Number(limit),
     });
@@ -49,11 +49,15 @@ export const getCountries = async (req: Request, res: Response) => {
       return {
         id: c.id,
         slug: c.slug,
+        rank: c.rank,
         mainImage: c.mainImage,
         flagImage: c.flagImage,
+        name: t?.name,
         continent: t?.continent,
+        capitalCity: t?.capitalCity,
         title: t?.title,
         overview: t?.overview,
+        climate: t?.climate,
         createdAt: c.createdAt,
         updatedAt: c.updatedAt,
       };
