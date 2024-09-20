@@ -130,7 +130,8 @@ export async function generateAndSaveCountry(
       country = await countryRepository.save(country);
 
       addToSitemap(
-        `${process.env.CLIENT_URL}/en/${process.env.COUNTRY_PATH}/${country.slug}`
+        `${process.env.CLIENT_URL}/en/${process.env.COUNTRY_PATH}/${country.slug}`,
+        "country"
       );
       console.log(`Generated: ${country.slug}`);
       await countryTranslate(country.id, "es");

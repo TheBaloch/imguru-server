@@ -1,8 +1,8 @@
 import path from "path";
 import fs from "fs";
 
-export const addToSitemap = (link: string) => {
-  const filePath = path.join(__dirname, "../sitemap.txt");
+export const addToSitemap = (link: string, name: string) => {
+  const filePath = path.join(__dirname, `../${name}.txt`);
   // Check if file exists
   if (fs.existsSync(filePath)) {
     const data = fs.readFileSync(filePath, "utf8");
@@ -23,8 +23,8 @@ export const addToSitemap = (link: string) => {
   }
 };
 
-export const removeFromSitemap = (link: string) => {
-  const filePath = path.join(__dirname, "../sitemap.txt");
+export const removeFromSitemap = (link: string, name: string) => {
+  const filePath = path.join(__dirname, `../${name}.txt`);
 
   // Check if file exists
   if (fs.existsSync(filePath)) {

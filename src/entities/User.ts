@@ -11,7 +11,6 @@ import {
 import bcrypt from "bcryptjs";
 //import { Comment } from "./Comment";
 import { v4 as uuidv4 } from "uuid";
-import { sendVerifyEmail } from "../utils/mailer/sendMail";
 
 @Entity()
 export class User {

@@ -29,7 +29,7 @@ app.use(helmet());
 app.use(bodyParser.json({ limit: "10mb" }));
 
 app.use(cors());
-app.set("trust proxy", 1);
+//app.set("trust proxy", 1);
 
 // Initialize passport
 app.use(passport.initialize());
@@ -37,16 +37,10 @@ app.use(passport.initialize());
 // Error Handler
 app.use(errorHandler);
 
-const staticFilesPath = path.resolve(
-  __dirname,
-  process.env.STATIC_FILES_PATH || "../public"
-);
+const staticFilesPath = path.resolve(__dirname, "../public");
 
 async function startServer() {
   //Routes
-  app.use("/api/sitemap.txt", (req, res) => {
-    res.sendFile(path.join(__dirname, "sitemap.txt"));
-  });
   app.use("/api", userRoutes);
   app.use("/api", countryRoutes);
   app.use("/api", siteSettingRoutes);

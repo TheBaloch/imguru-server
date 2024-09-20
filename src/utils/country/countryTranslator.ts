@@ -159,7 +159,8 @@ export default async function countryTranslate(
     await countryRepository.save(country);
 
     addToSitemap(
-      `${process.env.CLIENT_URL}/${language}/${process.env.COUNTRY_PATH}/${country.slug}`
+      `${process.env.CLIENT_URL}/${language}/${process.env.COUNTRY_PATH}/${country.slug}`,
+      "country"
     );
 
     console.log(`Translated: ${country.slug} to ${language}`);

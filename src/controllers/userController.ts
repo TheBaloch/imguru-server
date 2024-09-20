@@ -3,11 +3,6 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { AppDataSource } from "../config/database";
 import { User } from "../entities/User";
-import {
-  sendVerifyEmail,
-  sendResetEmail,
-  sendPaymentFailEmail,
-} from "../utils/mailer/sendMail";
 import { v4 as uuidv4 } from "uuid";
 
 export const registerUser = async (req: Request, res: Response) => {
@@ -84,11 +79,11 @@ export const resendVerificationEmail = async (req: Request, res: Response) => {
     user.emailVerificationToken = uuidv4();
     await userRepository.save(user);
 
-    await sendVerifyEmail(
-      user.email,
-      user.username,
-      user.emailVerificationToken
-    );
+    // await sendVerifyEmail(
+    //   user.email,
+    //   user.username,
+    //   user.emailVerificationToken
+    // );
 
     return res
       .status(200)
@@ -113,11 +108,11 @@ export const requestPasswordReset = async (req: Request, res: Response) => {
     user.passwordVerificationToken = uuidv4();
     await userRepository.save(user);
 
-    await sendResetEmail(
-      user.email,
-      user.username,
-      user.passwordVerificationToken
-    );
+    // await sendResetEmail(
+    //   user.email,
+    //   user.username,
+    //   user.passwordVerificationToken
+    // );
 
     return res
       .status(200)
