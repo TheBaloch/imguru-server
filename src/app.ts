@@ -15,6 +15,7 @@ dotenv.config(); //env file read
 //Routes Import
 import userRoutes from "./routes/userRoutes";
 import countryRoutes from "./routes/countryRoutes";
+import passportRoutes from "./routes/passportRoutes";
 import siteSettingRoutes from "./routes/siteSettingsRoutes";
 import uploadRoutes from "./routes/uploadRoute";
 
@@ -43,6 +44,7 @@ async function startServer() {
   //Routes
   app.use("/api", userRoutes);
   app.use("/api", countryRoutes);
+  app.use("/api", passportRoutes);
   app.use("/api", siteSettingRoutes);
   app.use("/api", uploadRoutes);
   app.use("/api/public", express.static(staticFilesPath));
