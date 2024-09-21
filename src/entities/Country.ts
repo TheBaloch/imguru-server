@@ -10,6 +10,7 @@ import {
 } from "typeorm";
 import { Tag } from "./Tag";
 import { CountryTranslations } from "./CountryTranslations";
+import { Passport } from "./Passport";
 
 @Entity()
 export class Country {
@@ -80,6 +81,9 @@ export class Country {
   @ManyToMany(() => Tag, (tag) => tag.country, { cascade: true })
   @JoinTable()
   tags!: Tag[];
+
+  @OneToMany(() => Passport, (passport) => passport.country)
+  passport!: Passport[];
 
   @CreateDateColumn({ type: "timestamp" })
   createdAt!: Date;

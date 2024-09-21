@@ -6,6 +6,7 @@ import { SiteSettings } from "../entities/SiteSettings";
 import { Tag } from "../entities/Tag";
 import { Country } from "../entities/Country";
 import { CountryTranslations } from "../entities/CountryTranslations";
+import { Passport } from "../entities/Passport";
 dotenv.config();
 
 export const AppDataSource = new DataSource({
@@ -15,6 +16,6 @@ export const AppDataSource = new DataSource({
   username: process.env.DB_USERNAME || "postgres",
   password: process.env.DB_PASSWORD || "postgres",
   database: process.env.DB_DATABASE || "country",
-  entities: [User, SiteSettings, Tag, Country, CountryTranslations],
+  entities: [User, SiteSettings, Tag, Country, CountryTranslations, Passport],
   synchronize: process.env.DB_SYNCHRONIZE === "true",
 });

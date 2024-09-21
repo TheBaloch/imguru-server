@@ -119,7 +119,9 @@ export async function generateAndSaveCountry(
       country.isoAlpha3Code = countryData.isoAlpha3Code;
       country.isoNumericCode = countryData.isoNumericCode;
       country.name = countryData.name;
-      country.rank = parseInt(countryData.rank);
+      country.rank = isNaN(parseInt(countryData.rank))
+        ? country.rank
+        : parseInt(countryData.rank);
       country.timeZone = countryData.timeZone;
       country.tags = tags;
       country.mainImage = mainImage;
