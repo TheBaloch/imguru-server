@@ -152,7 +152,7 @@ async function translateJSON(JSONCONTENT: any, language: string): Promise<any> {
         {
           role: "system",
           content:
-            "You are an assistant that translates JSON content into a specified language using a two-letter language code. Your response should contain only the translated JSON content in the specified language. Ensure that every string in the JSON is translated and that the structure of the JSON remains unchanged. Do not include any extra text or explanations.",
+            "You are an assistant that translates JSON content into a specified language using a two-letter language code. Your response should contain only the translated JSON content in the specified language. Ensure that every string in the JSON is translated and that the structure of the JSON remains unchanged. Do not include any extra text or explanations do not translate slug.",
         },
         {
           role: "user",
