@@ -59,9 +59,12 @@ export async function formatAndSavePassport(
     const newPassport = new Passport();
     newPassport.language = "en";
     newPassport.country = country;
-    newPassport.mainContent = await retry(convert2HTML, [mainContent]);
-    newPassport.secondContent = await retry(convert2HTML, [secondContent]);
-    newPassport.thirdContent = await retry(convert2HTML, [thirdContent]);
+    if (mainContent)
+      newPassport.mainContent = await retry(convert2HTML, [mainContent]);
+    if (secondContent)
+      newPassport.secondContent = await retry(convert2HTML, [secondContent]);
+    if (thirdContent)
+      newPassport.thirdContent = await retry(convert2HTML, [thirdContent]);
     newPassport.visaFreeAccess = visaFreeAccess;
     newPassport.visaOnArrival = visaOnArrival;
     newPassport.visaOnline = visaOnline;

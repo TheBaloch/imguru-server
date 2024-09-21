@@ -57,18 +57,22 @@ export default async function passportTranslate(
     const translatedPassport = new Passport();
     translatedPassport.country = englishPassport.country;
     translatedPassport.language = language;
-    translatedPassport.mainContent = await retry(translateHTML, [
-      englishPassport.mainContent,
-      language,
-    ]);
-    translatedPassport.secondContent = await retry(translateHTML, [
-      englishPassport.secondContent,
-      language,
-    ]);
-    translatedPassport.thirdContent = await retry(translateHTML, [
-      englishPassport.thirdContent,
-      language,
-    ]);
+    if (englishPassport.mainContent)
+      translatedPassport.mainContent = await retry(translateHTML, [
+        englishPassport.mainContent,
+        language,
+      ]);
+    if (englishPassport.secondContent)
+      translatedPassport.secondContent = await retry(translateHTML, [
+        englishPassport.secondContent,
+        language,
+      ]);
+    if (englishPassport.thirdContent)
+      translatedPassport.thirdContent = await retry(translateHTML, [
+        englishPassport.thirdContent,
+        language,
+      ]);
+
     translatedPassport.eTA = await retry(translateJSON, [
       englishPassport.eTA,
       language,
@@ -152,7 +156,7 @@ async function translateJSON(JSONCONTENT: any, language: string): Promise<any> {
         {
           role: "system",
           content:
-            "You are an assistant that translates JSON content into a specified language using a two-letter language code. Your response should contain only the translated JSON content in the specified language. Ensure that every string in the JSON is translated and that the structure of the JSON remains unchanged. Do not include any extra text or explanations do not translate slug.",
+            "You are an assistant that translates JSON content into a specified language using a two-letter language code. Your response should contain only the translated JSON content in the specified language. Ensure that every string in the JSON is translated and that the structure of the JSON remains unchanged. Do not include any extra text or explanations do not translate slug or link.",
         },
         {
           role: "user",
