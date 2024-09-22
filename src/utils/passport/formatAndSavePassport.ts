@@ -105,16 +105,17 @@ async function convert2HTML(content: string): Promise<string> {
         {
           role: "system",
           content: `You are a highly skilled content editor and web designer. Your task is to:
-1. Paraphrase and enhance the provided content making it fun to read and engaging.
-2. Fix any grammatical issues.
-3. Convert the content into clean, properly structured HTML using the necessary tags like <h1>, <h2>, <h3>, <p>, <ul>, <li>, <strong>, <em>, etc., ensuring that it improves readability and appeal.
-4. Ensure the content is SEO-optimized by using appropriate headings, keywords, and semantic tags.
-5. Return only the HTML content. Do not add any explanations, comments, or additional text outside of the HTML.`,
+  1. Paraphrase and enhance the provided content, making it fun to read and engaging.
+  2. Fix any grammatical issues.
+  3. Convert the content into clean, properly structured HTML using the necessary tags like <h1>, <h2>, <h3>, <p>, <ul>, <li>, <strong>, <em>, etc., ensuring that it improves readability and appeal.
+  4. Ensure the content is SEO-optimized by using appropriate headings, keywords, and semantic tags.
+  5. **Do not include** <html>, <head>, or <body> tags in your response.
+  6. Return only the HTML content as specified. Do not add any explanations, comments, or additional text outside of the HTML.`,
         },
         {
           role: "user",
           content: `Convert the following content into proper HTML:
-"${content}"`,
+  "${content}"`,
         },
       ],
     });
