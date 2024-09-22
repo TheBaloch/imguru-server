@@ -52,6 +52,7 @@ export const getCountries = async (req: Request, res: Response) => {
         rank: c.rank,
         mainImage: c.mainImage,
         flagImage: c.flagImage,
+        passportImage: c.passportImage,
         name: t?.name,
         continent: t?.continent,
         capitalCity: t?.capitalCity,
