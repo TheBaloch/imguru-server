@@ -42,8 +42,6 @@ export const getPassportBySlug = async (req: Request, res: Response) => {
   const { lang = "en" } = req.query;
   try {
     const countryRepository = AppDataSource.getRepository(Country);
-
-    // Fetch the main blog with related entities
     const country = await countryRepository.findOne({
       where: { slug },
       relations: ["translations", "tags", "passport"],
@@ -52,18 +50,35 @@ export const getPassportBySlug = async (req: Request, res: Response) => {
     if (!country) {
       return res.status(404).json({ message: "Country not found" });
     }
-
-    // Get translations and content for the main blog
     const translation =
       country.translations.find((t) => t.language === lang) ||
       country.translations.find((t) => t.language === "en");
     const passportT =
       country.passport.find((t) => t.language === lang) ||
       country.passport.find((t) => t.language === "en");
-    const { translations, passport, ...data } = country;
     return res.status(200).json({
-      ...data,
-      ...translation,
+      name: country.name,
+      rank: country.rank,
+      flagImage: country.flagImage,
+      passportImage: country.passportImage,
+      isoAlpha3Code: country.isoAlpha3Code,
+      isoNumericCode: country.isoNumericCode,
+      currency: country.currency,
+      timeZone: country.timeZone,
+      callingCode: country.callingCode,
+      governmentType: country.governmentType,
+      independenceDay: country.independenceDay,
+      createdAt: passportT?.createdAt,
+      tags: country.tags,
+      capitalCity: translation?.capitalCity,
+      continent: translation?.continent,
+      officialReligion: translation?.officialLanguage,
+      officialLanguage: translation?.officialLanguage,
+      overview: translation?.overview,
+      introduction: translation?.introduction,
+      climate: translation?.climate,
+      lifeExpectancy: translation?.lifeExpectancy,
+      nationalSymbols: translation?.nationalSymbols,
       ...passportT,
     });
   } catch (error) {
