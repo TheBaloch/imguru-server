@@ -72,27 +72,31 @@ export default async function passportTranslate(
         englishPassport.thirdContent,
         language,
       ]);
-
-    translatedPassport.eTA = await retry(translateJSON, [
-      englishPassport.eTA,
-      language,
-    ]);
-    translatedPassport.visaFreeAccess = await retry(translateJSON, [
-      englishPassport.visaFreeAccess,
-      language,
-    ]);
-    translatedPassport.visaOnArrival = await retry(translateJSON, [
-      englishPassport.visaOnArrival,
-      language,
-    ]);
-    translatedPassport.visaOnline = await retry(translateJSON, [
-      englishPassport.visaOnline,
-      language,
-    ]);
-    translatedPassport.visaRequired = await retry(translateJSON, [
-      englishPassport.visaRequired,
-      language,
-    ]);
+    if (englishPassport.eTA)
+      translatedPassport.eTA = await retry(translateJSON, [
+        englishPassport.eTA,
+        language,
+      ]);
+    if (englishPassport.visaFreeAccess)
+      translatedPassport.visaFreeAccess = await retry(translateJSON, [
+        englishPassport.visaFreeAccess,
+        language,
+      ]);
+    if (englishPassport.visaOnArrival)
+      translatedPassport.visaOnArrival = await retry(translateJSON, [
+        englishPassport.visaOnArrival,
+        language,
+      ]);
+    if (englishPassport.visaOnline)
+      translatedPassport.visaOnline = await retry(translateJSON, [
+        englishPassport.visaOnline,
+        language,
+      ]);
+    if (englishPassport.visaRequired)
+      translatedPassport.visaRequired = await retry(translateJSON, [
+        englishPassport.visaRequired,
+        language,
+      ]);
 
     await passportRepository.save(translatedPassport);
 
