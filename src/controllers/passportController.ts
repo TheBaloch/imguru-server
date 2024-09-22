@@ -19,15 +19,7 @@ export const addPassport = async (req: Request, res: Response) => {
 
   if (auth != process.env.AUTH_KEY)
     return res.status(408).json({ message: "Not Authorized" });
-  if (
-    !visaFreeAccess ||
-    !visaOnArrival ||
-    !eTA ||
-    !visaOnline ||
-    !visaRequired ||
-    !slug
-  )
-    return res.status(304).json({ message: "Something is missing" });
+  if (!slug) return res.status(304).json({ message: "Slug is missing" });
   res.status(201).json({ message: "Passport generation started" });
   setTimeout(async () => {
     console.log(`Started: ${slug}`);
