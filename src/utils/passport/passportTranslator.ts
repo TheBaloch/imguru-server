@@ -148,23 +148,26 @@ async function translateHTML(
   }
 }
 
-async function translateJSON(JSONCONTENT: any, language: string): Promise<any> {
+async function translateJSON(
+  JSONCONTENT: any[],
+  language: string
+): Promise<any[]> {
   try {
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",
       messages: [
         {
           role: "system",
-          content:
-            "You are an assistant that translates JSON content into a specified language using a two-letter language code. Your response should contain only the translated JSON content in the specified language. Ensure that every string in the JSON is translated and that the structure of the JSON remains unchanged. Do not include any extra text or explanations do not translate slug or link.",
+          content: `You are an assistant that translates the 'name' fields in JSON content into a specified language using a two-letter language code. Your response should contain only the translated JSON content. Ensure that every 'name' string in the JSON is translated, the other fields remain unchanged, and the structure of the JSON remains the same. Do not include any extra text or explanations.`,
         },
         {
           role: "user",
-          content: `Translate the following JSON content into the language specified by the two-letter language code provided. Ensure all translatable text within the JSON is translated, and the original content is not returned. Provide only the translated JSON content without any additional text.
-          Language Code: ${language}
+          content: `Translate the 'name' fields in the following JSON content into the language specified by the two-letter language code provided. Ensure all 'name' fields within the JSON are translated, and the original content is not returned. Provide only the translated JSON content without any additional text.
   
-          JSON Content:
-          ${JSON.stringify(JSONCONTENT)}`,
+  Language Code: ${language}
+  
+  JSON Content:
+  ${JSON.stringify(JSONCONTENT)}`,
         },
       ],
     });
@@ -177,10 +180,12 @@ async function translateJSON(JSONCONTENT: any, language: string): Promise<any> {
       throw new Error("Empty response from OpenAI.");
     }
 
+    // Clean up any unexpected characters
     const cleanJsonString = result.replace(
       /[\u0000-\u001F\u007F-\u009F`]/g,
       ""
     );
+
     const translatedObject = JSON.parse(cleanJsonString);
     return translatedObject;
   } catch (error) {
