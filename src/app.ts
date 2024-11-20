@@ -42,12 +42,12 @@ const staticFilesPath = path.resolve(__dirname, "../public");
 
 async function startServer() {
   //Routes
-  app.use("/api", userRoutes);
-  app.use("/api", countryRoutes);
-  app.use("/api", passportRoutes);
-  app.use("/api", siteSettingRoutes);
-  app.use("/api", uploadRoutes);
-  app.use("/api/public", express.static(staticFilesPath));
+  app.use("/framework", userRoutes);
+  app.use("/framework", countryRoutes);
+  app.use("/framework", passportRoutes);
+  app.use("/framework", siteSettingRoutes);
+  app.use("/framework", uploadRoutes);
+  app.use("/framework/public", express.static(staticFilesPath));
 
   //Cache
   if (process.env.REDIS_ENABLED === "true") client.connect();
